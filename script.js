@@ -2,6 +2,9 @@ const gridContainer = document.querySelector('.grid-container');
 const slider = document.querySelector('.slider');
 const rangeLabel = document.querySelector('.range-label');
 
+let isDragging = false;
+
+
 // remove child nodes from container
 
 function deleteGrid() {
@@ -11,6 +14,7 @@ function deleteGrid() {
         child = gridContainer.lastElementChild;
     }
 }
+
 
 // update the slider range label when slider is moved
 
@@ -32,6 +36,23 @@ function createGrid() {
         gridSquare.style.width = gridSquare.style.height;
 
         gridContainer.appendChild(gridSquare);
+
+        // click and drag to draw on etch a sketch
+
+        gridSquare.addEventListener('mousedown', () => {
+            isDragging = true;
+            gridSquare.style.backgroundColor = 'black';
+        });
+
+        gridSquare.addEventListener('mouseover', () => {
+            if (isDragging) {
+                gridSquare.style.backgroundColor = 'black';
+            }
+        });
+
+        gridSquare.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
     }
 
     updateRangeLabel();
