@@ -17,3 +17,8 @@
 .grid-square:hover {
     background-color: grey;
 }
+
+.interactive {
+    display: flex;
+    justify-content: space-between;
+}
