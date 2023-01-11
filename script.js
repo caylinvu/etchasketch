@@ -1,14 +1,12 @@
 const gridContainer = document.querySelector('.grid-container');
 const slider = document.querySelector('.slider');
 const rangeLabel = document.querySelector('.range-label');
-const colorButtons = document.querySelectorAll('.color-button');
 const blackButton = document.querySelector('.black-button');
 const rgbButton = document.querySelector('.rgb-button');
-const shadingButton = document.querySelector('.shading-button');
 const clearButton = document.querySelector('.clear-button');
 
 let isDragging = false;
-let drawColor = 'black';
+let drawColor = 'rgb(0,0,0)';
 
 // remove child nodes from container
 
@@ -59,14 +57,12 @@ function createGrid() {
 
         gridSquare.style.height = (512 / slider.value) + "px";
         gridSquare.style.width = gridSquare.style.height;
-
+    
         gridContainer.appendChild(gridSquare);
 
-        // click and drag to draw on etch a sketch (default color - black)
+        // click and drag to draw on etch a sketch
 
         gridSquare.addEventListener('mousedown', () => {
-            isDragging = true;
-            console.log(drawColor);
             if (drawColor == 'random') {
                 gridSquare.style.backgroundColor = generateRandomColor();
             } else {
@@ -83,24 +79,21 @@ function createGrid() {
                 }
             }
         });
-
-        gridSquare.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
     }
 
     updateRangeLabel();
-    clearGrid();
 }
 
+createGrid();    
+clearGrid();
+slider.addEventListener('click', createGrid);
 
-createGrid();
+// stop drawing when mouse button is released
+
+gridContainer.addEventListener('mousedown', () => isDragging = true);
+document.body.addEventListener('mouseup', () => isDragging = false);
+
+// change draw color using buttons
 
 blackButton.addEventListener('click', () => drawColor = 'black');
 rgbButton.addEventListener('click', () => drawColor = 'random');
-
-slider.addEventListener('click', createGrid);
-
-// add shading function
-
-// add UI

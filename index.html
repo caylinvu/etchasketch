@@ -6,21 +6,22 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class="main-container">
-            <div class="heading">Etch-A-Sketch</div>
-            <div class ="grid">
-                <div class="grid-container"></div>
-            </div>
-            <div class="interactive">
-                <div class="slider-container">
-                    <input type="range" min="1" max="100" value="16" class="slider" oninput="updateRangeLabel()">
-                    <div class="range-label"></div>
+        <div class ="outer-container">
+            <div class="main-container">
+                <div class="heading">Etch-A-Sketch</div>
+                <div class ="grid">
+                    <div class="grid-container"></div>
                 </div>
-                <div class="button-container">
-                    <button class="black-button color-button">Black</button>
-                    <button class="rgb-button color-button">RGB</button>
-                    <button class="shading-button color-button">Shading</button>
-                    <button class="clear-button">Clear</button>
+                <div class="interactive">
+                    <div class="slider-container">
+                        <input type="range" min="1" max="100" value="16" class="slider" oninput="updateRangeLabel()">
+                        <div class="range-label"></div>
+                    </div>
+                    <div class="button-container">
+                        <button class="black-button color-button">Black</button>
+                        <button class="rgb-button color-button">RGB</button>
+                        <button class="clear-button">Clear</button>
+                    </div>
                 </div>
             </div>
         </div>
