@@ -1,12 +1,14 @@
 const gridContainer = document.querySelector('.grid-container');
 const slider = document.querySelector('.slider');
 const rangeLabel = document.querySelector('.range-label');
+const colorButtons = document.querySelectorAll('.color-button');
 const blackButton = document.querySelector('.black-button');
 const rgbButton = document.querySelector('.rgb-button');
 const shadingButton = document.querySelector('.shading-button');
 const clearButton = document.querySelector('.clear-button');
 
 let isDragging = false;
+let drawColor = 'black';
 
 // remove child nodes from container
 
@@ -36,6 +38,7 @@ function clearGrid() {
 }
 
 // generate random color
+
 function generateRandomColor() {
     let letters = '0123456789ABCDEF';
     let color = '#';
@@ -63,57 +66,27 @@ function createGrid() {
 
         gridSquare.addEventListener('mousedown', () => {
             isDragging = true;
-            gridSquare.style.backgroundColor = 'black';
+            console.log(drawColor);
+            if (drawColor == 'random') {
+                gridSquare.style.backgroundColor = generateRandomColor();
+            } else {
+                gridSquare.style.backgroundColor = drawColor;
+            }
         });
 
         gridSquare.addEventListener('mouseover', () => {
             if (isDragging) {
-                gridSquare.style.backgroundColor = 'black';
+                if (drawColor == 'random') {
+                    gridSquare.style.backgroundColor = generateRandomColor();
+                } else {
+                    gridSquare.style.backgroundColor = drawColor;
+                }
             }
         });
 
         gridSquare.addEventListener('mouseup', () => {
             isDragging = false;
         });
-
-        // change drawing color back to black after pressing black button
-
-        blackButton.addEventListener('click', () => {
-            gridSquare.addEventListener('mousedown', () => {
-                isDragging = true;
-                gridSquare.style.backgroundColor = 'black';
-            });
-
-            gridSquare.addEventListener('mouseover', () => {
-                if (isDragging) {
-                    gridSquare.style.backgroundColor = 'black';
-                }
-            });
-    
-            gridSquare.addEventListener('mouseup', () => {
-                isDragging = false;
-            });
-        });
-
-        // change drawing color to RGB after pressing RGB button
-
-        rgbButton.addEventListener('click', () => {
-            gridSquare.addEventListener('mousedown', () => {
-                isDragging = true;
-                gridSquare.style.backgroundColor = generateRandomColor();
-            });
-
-            gridSquare.addEventListener('mouseover', () => {
-                if (isDragging) {
-                    gridSquare.style.backgroundColor = generateRandomColor();
-                }
-            });
-    
-            gridSquare.addEventListener('mouseup', () => {
-                isDragging = false;
-            });
-        });
-
     }
 
     updateRangeLabel();
@@ -123,9 +96,10 @@ function createGrid() {
 
 createGrid();
 
-slider.addEventListener('click', createGrid);
+blackButton.addEventListener('click', () => drawColor = 'black');
+rgbButton.addEventListener('click', () => drawColor = 'random');
 
-// add RGB drawing function
+slider.addEventListener('click', createGrid);
 
 // add shading function
 
