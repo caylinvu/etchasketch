@@ -1,6 +1,7 @@
 const gridContainer = document.querySelector('.grid-container');
 const slider = document.querySelector('.slider');
 const rangeLabel = document.querySelector('.range-label');
+const clearButton = document.querySelector('.clear-button');
 
 let isDragging = false;
 
@@ -56,6 +57,15 @@ function createGrid() {
     }
 
     updateRangeLabel();
+
+    // *** see if can move gridSquare event listeners down using children nodes
+
+    clearButton.addEventListener('click', () => {
+        let nodes = gridContainer.children;
+        for (let i = 0; i < nodes.length; i++) {
+            nodes[i].style.backgroundColor = 'lightgrey';
+        }
+    });
 }
 
 
