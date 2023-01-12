@@ -55,7 +55,7 @@ function createGrid() {
         let gridSquare = document.createElement('div');
         gridSquare.classList.add("grid-square");
 
-        gridSquare.style.height = (512 / slider.value) + "px";
+        gridSquare.style.height = (600 / slider.value) + "px";
         gridSquare.style.width = gridSquare.style.height;
     
         gridContainer.appendChild(gridSquare);
@@ -95,5 +95,18 @@ document.body.addEventListener('mouseup', () => isDragging = false);
 
 // change draw color using buttons
 
-blackButton.addEventListener('click', () => drawColor = 'black');
-rgbButton.addEventListener('click', () => drawColor = 'random');
+blackButton.addEventListener('click', () => {
+    drawColor = 'black';
+    blackButton.classList.remove("white");
+    blackButton.classList.add("yellow");
+    rgbButton.classList.remove("yellow");
+    rgbButton.classList.add("white");
+});
+
+rgbButton.addEventListener('click', () => {
+    drawColor = 'random';
+    rgbButton.classList.remove("white");
+    rgbButton.classList.add("yellow");
+    blackButton.classList.remove("yellow");
+    blackButton.classList.add("white");
+});

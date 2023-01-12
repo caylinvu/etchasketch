@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Etch-A-Sketch</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy">
     </head>
     <body>
         <div class ="outer-container">
@@ -13,14 +14,21 @@
                     <div class="grid-container"></div>
                 </div>
                 <div class="interactive">
-                    <div class="slider-container">
-                        <input type="range" min="1" max="100" value="16" class="slider" oninput="updateRangeLabel()">
+                    <div class="slider-outer">
+                        <div class="slider-container">
+                            <input type="range" min="1" max="100" value="16" class="slider" oninput="updateRangeLabel()">
+                        </div>
                         <div class="range-label"></div>
                     </div>
                     <div class="button-container">
-                        <button class="black-button color-button">Black</button>
-                        <button class="rgb-button color-button">RGB</button>
-                        <button class="clear-button">Clear</button>
+                        <div class="color-button-container">
+                            <div class="mode">Mode:</div>
+                            <button class="black-button yellow">Black</button>
+                            <button class="rgb-button white">RGB</button>
+                        </div>
+                        <div class="clear-button-container">
+                            <button class="clear-button">Clear</button>
+                        </div>
                     </div>
                 </div>
             </div>
