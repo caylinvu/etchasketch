@@ -33,16 +33,16 @@ body {
 .grid {
     display: flex;
     justify-content: center;
-    width: 600px;
-    height: 600px;
+    width: 625px;
+    height: 625px;
     background: lightgrey;
 }
 
 .grid-container {
     display: flex;
     flex-wrap: wrap;
-    width: 600px;
-    height: 600px;
+    width: 625px;
+    height: 625px;
 }
 
 .grid-square {
@@ -65,7 +65,7 @@ body {
 .slider-outer {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .slider-container {
@@ -109,12 +109,18 @@ body {
 
 .range-label {
     color: darkslategrey;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 .button-container {
     display: flex;
-    gap: 43px;
+    gap: 35px;
+}
+
+.color-mode-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .color-button-container {
@@ -126,16 +132,16 @@ body {
 .mode {
     color: rgb(75, 99, 99);
     font-weight: 600;
-    font-size: 19px;
+    font-size: 17px;
 }
 
 .button-container button {
     border: none;
     border-radius: 4px;
     font-family:'Courier New', Courier, monospace;
-    font-size: 18px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    font-size: 17px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     padding-left: 10px;
     padding-right: 10px;
 }

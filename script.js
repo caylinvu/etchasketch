@@ -6,7 +6,7 @@ const rgbButton = document.querySelector('.rgb-button');
 const clearButton = document.querySelector('.clear-button');
 
 let isDragging = false;
-let drawColor = 'rgb(0,0,0)';
+let drawColor = '#595959';
 
 // remove child nodes from container
 
@@ -24,25 +24,12 @@ function updateRangeLabel() {
     rangeLabel.textContent = `${slider.value} x ${slider.value}`;
 }
 
-// clear grid when clear button is clicked
-
-function clearGrid() {
-    clearButton.addEventListener('click', () => {
-        let nodes = gridContainer.children;
-        for (let i = 0; i < nodes.length; i++) {
-            nodes[i].style.backgroundColor = 'lightgrey';
-        }
-    });    
-}
-
 // generate random color
 
 function generateRandomColor() {
-    let letters = '0123456789ABCDEF';
-    let color = '#';
-    for(let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
+    const colorPalette = ['#FFADAD', '#FFD6A5', '#FDFFB6', '#CAFFBF', '#9BF6FF', '#A0C4FF', '#BDB2FF', '#FFC6FF']
+    let randomColor = Math.floor(Math.random() * colorPalette.length);
+    let color = colorPalette[randomColor];
     return color;
 }
 
@@ -55,7 +42,7 @@ function createGrid() {
         let gridSquare = document.createElement('div');
         gridSquare.classList.add("grid-square");
 
-        gridSquare.style.height = (600 / slider.value) + "px";
+        gridSquare.style.height = (625 / slider.value) + "px";
         gridSquare.style.width = gridSquare.style.height;
     
         gridContainer.appendChild(gridSquare);
@@ -84,9 +71,9 @@ function createGrid() {
     updateRangeLabel();
 }
 
-createGrid();    
-clearGrid();
+createGrid();
 slider.addEventListener('click', createGrid);
+clearButton.addEventListener('click', createGrid);
 
 // stop drawing when mouse button is released
 
@@ -96,7 +83,7 @@ document.body.addEventListener('mouseup', () => isDragging = false);
 // change draw color using buttons
 
 blackButton.addEventListener('click', () => {
-    drawColor = 'black';
+    drawColor = '#595959';
     blackButton.classList.remove("white");
     blackButton.classList.add("yellow");
     rgbButton.classList.remove("yellow");
